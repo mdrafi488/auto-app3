@@ -1,32 +1,45 @@
-pipeline {
-    agent any
-    stages {
-        stage('Stop Apache'){
-            steps {
-                sh"
-                ssh root@172.31.18.173 'systemctl stop httpd'
-                ssh root@172.31.18.173 'ps -ef | grep -i httpd'
-                "
-            }
-        }
-        // stage("Start Apache"){
-        //     steps{
-        //         sh"
-        //         ssh root@172.31.18.173 'systemctl start httpd
-        //         "
-        //     }
-        // }
-    }
-}
-
 // pipeline {
 //     agent any
-
 //     stages {
-//         stage('Hello') {
+//         stage('Stop Apache'){
 //             steps {
-//                 echo 'Hello World'
+//                 sh "
+//                 ssh root@172.31.18.173 'systemctl stop httpd'
+//                 ssh root@172.31.18.173 'ps -ef | grep -i httpd'
+//                 "
 //             }
 //         }
+//         // stage("Start Apache"){
+//         //     steps{
+//         //         sh"
+//         //         ssh root@172.31.18.173 'systemctl start httpd
+//         //         "
+//         //     }
+//         // }
 //     }
 // }
+
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout Stage') {
+            steps {
+                echo 'checkout'
+                echo $JOB_NAME
+            }
+        }
+        stage('CI Stage') {
+            steps {
+                echo 'CI Stage'
+                echo $BUILD_NUMBER
+            }
+        }
+        stage('CD Stage') {
+            steps {
+                echo 'CD Stage'
+                echo $USER
+            }
+        }
+    }
+}
