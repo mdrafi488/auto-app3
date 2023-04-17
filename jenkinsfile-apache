@@ -1,11 +1,11 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Stop Apache"){
-            steps{
+    stages {
+        stage('Stop Apache'){
+            steps {
                 sh"
                 ssh root@172.31.18.173 'systemctl stop httpd'
-                sleep 30 sec
+                ssh root@172.31.18.173 'ps -ef | grep -i httpd'
                 "
             }
         }
@@ -18,3 +18,15 @@ pipeline{
         // }
     }
 }
+
+// pipeline {
+//     agent any
+
+//     stages {
+//         stage('Hello') {
+//             steps {
+//                 echo 'Hello World'
+//             }
+//         }
+//     }
+// }
