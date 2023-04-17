@@ -1,0 +1,20 @@
+pipeline{
+    agent any
+    stages{
+        stage("Stop Apache"){
+            steps{
+                sh"
+                ssh root@172.31.18.173 'systemctl stop httpd'
+                sleep 30 sec
+                "
+            }
+        }
+        stage("Start Apache"){
+            steps{
+                sh"
+                ssh root@172.31.18.173 'systemctl start httpd
+                "
+            }
+        }
+    }
+}
