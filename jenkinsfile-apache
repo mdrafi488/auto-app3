@@ -9,12 +9,12 @@ pipeline{
                 "
             }
         }
-        stage("Start Apache"){
-            steps{
-                sh"
-                ssh root@172.31.18.173 'systemctl start httpd
-                "
-            }
-        }
+        // stage("Start Apache"){
+        //     steps{
+        //         sh"
+        //         ssh root@172.31.18.173 'systemctl start httpd
+        //         "
+        //     }
+        // }
     }
 }
